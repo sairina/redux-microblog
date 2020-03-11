@@ -1,11 +1,9 @@
 import React from 'react';
 import TitleList from './TitleList';
-import { v4 as uuid } from 'uuid';
-
 
 function Home({ posts }) {
 
-  const singlePost = posts.map(p => <TitleList posts={p} key={uuid} />
+  const singlePost = Object.entries(posts).map(p => <TitleList posts={p} key={p[0]} />
   );
 
   return (

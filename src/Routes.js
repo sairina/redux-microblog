@@ -1,10 +1,10 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Home from './Home';
 import PostForm from './PostForm';
 import PostView from './PostView';
 
-function Routes({ add, posts }) {
+function Routes({ add, posts, remove, update }) {
 
   return (
     <div>
@@ -16,8 +16,9 @@ function Routes({ add, posts }) {
           <PostForm add={add} />
         </Route>
         <Route exact path="/:postId">
-          <PostView />
+          <PostView posts={posts} remove={remove} update={update}/>
         </Route>
+        <Redirect to="/"/>
       </Switch>
     </div>
   );
