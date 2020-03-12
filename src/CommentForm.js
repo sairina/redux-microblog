@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 function CommentForm({ post, add }) {
-
+  const { postId } = useParams();
   const [formData, setFormData] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
-    add(formData);
-    // history.push('/');
+    add(postId, formData);
     setFormData('');
   }
 

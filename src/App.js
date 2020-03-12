@@ -23,7 +23,6 @@ function App() {
   const update = (id, updatedPost) => {
     setPosts(posts => {
       let postCopy = { ...posts };
-      // console.log('postCopy[id]', postCopy[id])
       postCopy[id] = updatedPost;
       return postCopy; 
     });
@@ -32,12 +31,11 @@ function App() {
   const addComment = (id, comment) => {
     setPosts(posts => {
       const postCopy = { ...posts };
-      postCopy[id] = { ...posts, comments: comment };
+      postCopy[id].comments = [...postCopy[id].comments, comment];
       return postCopy;
     });
   };
 
-  console.log(posts)
 
   const remove = id => {
     delete posts[id]
