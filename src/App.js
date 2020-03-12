@@ -11,14 +11,11 @@ const INITIAL_POSTS_STATE = {};
 function App() {
   const [posts, setPosts] = useState(INITIAL_POSTS_STATE);
 
-  const add = post => {
-    let newPost = { ...post, id: uuid() };
-    setPosts(posts => {
-      let postCopy = { ...posts };
-      postCopy[newPost.id] = newPost;
-      return postCopy;
-    });
-  }
+  // const add = post => {
+  //   let newPost = { ...post, id: uuid() };
+  //   useDispat
+  //   });
+  // }
 
   const update = (id, updatedPost) => {
     setPosts(posts => {
@@ -45,7 +42,7 @@ function App() {
       <div className="App">
         <NavBar />
         <Routes
-          add={add}
+          // add={add}
           posts={posts}
           update={update}
           remove={remove}

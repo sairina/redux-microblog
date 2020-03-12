@@ -13,7 +13,9 @@ function Routes({ add, posts, remove, update, addComment, setPosts }) {
           <Home posts={posts} />
         </Route>
         <Route exact path="/new">
-          <NewPost add={add} />
+          <NewPost 
+          // add={add} 
+          />
         </Route>
         <Route exact path="/:postId">
           <SinglePost

@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
+import { useDispatch } from 'react-redux';
+import {addPost} from './actions';
+import { v4 as uuid } from 'uuid';
 
 function PostForm({ add, update, postId, editing, setEditing, post }) {
+  const dispatch = useDispatch();
   const INITIAL_FORM_DATA = post ?
     post[1]
     : {
@@ -16,17 +19,34 @@ function PostForm({ add, update, postId, editing, setEditing, post }) {
 
   const handleSubmit = e => {
     if (!editing) {
-      e.preventDefault();
-      add({ ...formData });
-      history.push('/');
-      setFormData(INITIAL_FORM_DATA);
-    } else {
-      e.preventDefault();
-      update(postId, formData);
-      setEditing(false);
-      history.push(`/${postId}`);
-    }
-  }
+    e.preventDefault();
+    let newPost = { ...formData, id: uuid() };
+  dispatch(addPost({...newPost}));
+  history.push('/');
+  setFormData(INITIAL_FORM_DATA);
+} else {
+  e.preventDefault();
+  update(postId, formData);
+  setEditing(false);
+  history.push(`/${postId}`);
+}
+}
+
+
+  // const handleSubmit = e => {
+  //   if (!editing) {
+  //     e.preventDefault();
+  //     dispatch({ type: action, payload: { ...formData }});
+  //     // add({ ...formData });
+  //     history.push('/');
+  //     setFormData(INITIAL_FORM_DATA);
+  //   } else {
+  //     e.preventDefault();
+  //     update(postId, formData);
+  //     setEditing(false);
+  //     history.push(`/${postId}`);
+  //   }
+  // }
 
   const handleChange = e => {
     const { name, value } = e.target;
