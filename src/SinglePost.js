@@ -16,7 +16,6 @@ function SinglePost({ posts, update, remove, add, setPosts }) {
           posts={posts}
           post={post}
           postId={postId}
-          update={update}
           editing={editing} 
           setEditing={setEditing} />
         : <PostView
@@ -24,7 +23,6 @@ function SinglePost({ posts, update, remove, add, setPosts }) {
           post={post}
           setEditing={setEditing}
           remove={remove}
-          add={add}
           setPosts={setPosts} />}
     </div>
   );

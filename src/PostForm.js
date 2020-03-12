@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addPost } from './actions';
+import { addPost, updatePost } from './actions';
 import { v4 as uuid } from 'uuid';
 
-function PostForm({ update, postId, editing, setEditing, post }) {
+function PostForm({postId, editing, setEditing, post }) {
   const dispatch = useDispatch();
   const INITIAL_FORM_DATA = post ?
     post[1]
@@ -26,7 +26,7 @@ function PostForm({ update, postId, editing, setEditing, post }) {
       setFormData(INITIAL_FORM_DATA);
     } else {
       e.preventDefault();
-      update(postId, formData);
+      dispatch(updatePost({...formData, id: postId}));
       setEditing(false);
       history.push(`/posts/${postId}`);
     }

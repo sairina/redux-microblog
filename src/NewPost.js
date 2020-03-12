@@ -1,14 +1,12 @@
 import React from 'react';
 import PostForm from './PostForm';
 
-function NewPost({ add }) {
+function NewPost() {
 
   return (
     <div className="NewPost">
       <h2>New Post</h2>
-      <PostForm 
-      // add={add}
-       />
+      <PostForm />
     </div>
   );
 }

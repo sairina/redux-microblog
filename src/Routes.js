@@ -4,7 +4,7 @@ import Home from './Home';
 import NewPost from './NewPost';
 import SinglePost from './SinglePost';
 
-function Routes({ posts, remove, update, addComment, setPosts }) {
+function Routes({ posts, remove, addComment, setPosts }) {
 
   return (
     <div>
@@ -18,7 +18,6 @@ function Routes({ posts, remove, update, addComment, setPosts }) {
         <Route exact path="/posts/:postId">
           <SinglePost
             posts={posts}
-            update={update}
             remove={remove}
             add={addComment}
             setPosts={setPosts} />
