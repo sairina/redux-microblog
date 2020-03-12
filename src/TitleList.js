@@ -1,16 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function TitleList({ posts }) {
+function TitleList({ post }) {
 
-  
   return (
     <div className="TitleList">
-      <Link to={`/${posts[0]}`}>
-      <h3>{posts[1].title}</h3>
+      <Link to={`/posts/${post[0]}`}>
+        <h3>{post[1].title}</h3>
       </Link>
-      <h4>{posts[1].description}</h4>
-      
+      <h4>{post[1].description}</h4>
+
     </div>
   );
 }

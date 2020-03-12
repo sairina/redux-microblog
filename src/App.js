@@ -3,8 +3,6 @@ import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import NavBar from './NavBar';
 import Routes from './Routes';
-// import BlogContext from './blogContext';
-import { v4 as uuid } from 'uuid';
 
 const INITIAL_POSTS_STATE = {};
 
@@ -42,7 +40,6 @@ function App() {
       <div className="App">
         <NavBar />
         <Routes
-          // add={add}
           posts={posts}
           update={update}
           remove={remove}

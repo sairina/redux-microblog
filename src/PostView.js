@@ -3,11 +3,13 @@ import Comment from './Comment';
 import CommentForm from './CommentForm';
 import { useParams, useHistory } from "react-router-dom";
 import { v4 as uuid } from 'uuid';
+import { useSelector } from 'react-redux';
 
-function PostView({ posts, remove, update, setEditing, setPosts, post, add }) {
+function PostView({ remove, update, setEditing, setPosts, post, add }) { //update??
   const { postId } = useParams();
   const history = useHistory();
-  const commentsArr = post[1].comments;
+  const store = useSelector(store => store);
+  const {title, description, body, comments} = store[postId];
 
   const handleEdit = () => {
     setEditing(true);
@@ -19,7 +21,7 @@ function PostView({ posts, remove, update, setEditing, setPosts, post, add }) {
   };
 
   const removeComment = comment => {
-    let newCommentsArr = commentsArr.filter(c => c !== comment);
+    let newCommentsArr = comments.filter(c => c !== comment);
     setPosts(posts => {
       let postCopy = { ...posts };
       postCopy[postId].comments = newCommentsArr;
@@ -29,21 +31,20 @@ function PostView({ posts, remove, update, setEditing, setPosts, post, add }) {
 
   return (
     <div>
-      {!post ? history.push("/") :
+      <div>
         <div>
-          <div>
-            <h2>{post[1].title}</h2>
-            <p>{post[1].description}</p>
-            <p>{post[1].body}</p>
-            <button onClick={handleEdit}>Edit Form</button>
-            <button onClick={handleRemove}>Delete</button>
-          </div>
-          <div>
-            <h2>Comments</h2>
-            {commentsArr.map(c => <Comment key={uuid()} comment={c} remove={removeComment} />)}
-            <CommentForm post={post} add={add} />
-          </div>
-        </div>}
+          <h2>{title}</h2>
+          <p>{description}</p>
+          <p>{body}</p>
+          <button onClick={handleEdit}>Edit Form</button>
+          <button onClick={handleRemove}>Delete</button>
+        </div>
+        <div>
+          <h2>Comments</h2>
+          {comments.map(c => <Comment key={uuid()} comment={c} remove={removeComment} />)}
+          <CommentForm post={post} add={add} />
+        </div>
+      </div>
     </div>
   );
 }
