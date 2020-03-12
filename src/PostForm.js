@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 
 function PostForm({ add, update, postId, editing, setEditing, post}) {
-  const INITIAL_FORM_DATA = post ? post[1] : { title: "", description: "", body: "" };
+  const INITIAL_FORM_DATA = post ? post[1] : { title: "", description: "", body: "", comments: [] };
   const history = useHistory();
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 

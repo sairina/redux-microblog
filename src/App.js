@@ -19,7 +19,6 @@ function App() {
       return postCopy;
     });
   }
-
   
   const update = (id, updatedPost) => {
     setPosts(posts => {
