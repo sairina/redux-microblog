@@ -4,10 +4,10 @@ import CommentForm from './CommentForm';
 import { useParams, useHistory } from "react-router-dom";
 import { v4 as uuid } from 'uuid';
 
-function PostView({ posts, remove, update, setEditing, post, add }) {
+function PostView({ posts, remove, update, setEditing, setPosts, post, add }) {
   const { postId } = useParams();
   const history = useHistory();
-  const commentsArr = post[1].comments; 
+  const commentsArr = post[1].comments;
 
   const handleEdit = () => {
     setEditing(true);
@@ -18,8 +18,13 @@ function PostView({ posts, remove, update, setEditing, post, add }) {
     history.push('/');
   };
 
-  const removeComment = comment => { //added function; works, but does not remove comment from DOM
-    return commentsArr.filter(c => c !== comment);
+  const removeComment = comment => {
+    let newCommentsArr = commentsArr.filter(c => c !== comment);
+    setPosts(posts => {
+      let postCopy = { ...posts };
+      postCopy[postId].comments = newCommentsArr;
+      return postCopy
+    });
   };
 
   return (
@@ -35,7 +40,7 @@ function PostView({ posts, remove, update, setEditing, post, add }) {
           </div>
           <div>
             <h2>Comments</h2>
-            {commentsArr.map(c => <Comment key={uuid()} comment={c} remove={removeComment}/>)}
+            {commentsArr.map(c => <Comment key={uuid()} comment={c} remove={removeComment} />)}
             <CommentForm post={post} add={add} />
           </div>
         </div>}

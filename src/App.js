@@ -24,7 +24,7 @@ function App() {
     setPosts(posts => {
       let postCopy = { ...posts };
       postCopy[id] = updatedPost;
-      return postCopy; 
+      return postCopy;
     });
   }
 
@@ -35,7 +35,6 @@ function App() {
       return postCopy;
     });
   };
-
 
   const remove = id => {
     delete posts[id]
@@ -50,7 +49,9 @@ function App() {
           posts={posts}
           update={update}
           remove={remove}
-          addComment={addComment} />
+          addComment={addComment}
+          setPosts={setPosts}
+        />
       </div>
     </BrowserRouter>
   );
