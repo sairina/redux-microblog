@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-function CommentForm({ post, add }) {
+function CommentForm({ add }) {
   const { postId } = useParams();
   const [formData, setFormData] = useState('');
 
