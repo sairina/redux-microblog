@@ -7,9 +7,11 @@ function SinglePost({ posts, update, remove }) {
   const { postId } = useParams();
   const [editing, setEditing] = useState(false);
 
+  let post = Object.entries(posts).find(p => postId === p[0])
+
   return (
     <div className="SinglePost">
-      {editing ? <PostForm posts={posts} postId={postId} update={update} editing={editing} setEditing={setEditing} /> : <PostView posts={posts} setEditing={setEditing} remove={remove}/>}
+      {editing ? <PostForm posts={posts} post={post} postId={postId} update={update} editing={editing} setEditing={setEditing} /> : <PostView posts={posts} post={post} setEditing={setEditing} remove={remove}/>}
     </div>
   );
 }

@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 
-function PostForm({ add, update, postId, editing, setEditing, title = "", description = "", body = "" }) {
-  const INITIAL_FORM_DATA = { title, description, body };
+function PostForm({ add, update, postId, editing, setEditing, post}) {
+  const INITIAL_FORM_DATA = post ? post[1] : { title: "", description: "", body: "" };
   const history = useHistory();
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 
@@ -41,21 +41,21 @@ function PostForm({ add, update, postId, editing, setEditing, title = "", descri
         <input
           id="title"
           name="title"
-          value={FormData.title}
+          value={formData.title}
           onChange={handleChange}
         />
         <label htmlFor="description">Description</label>
         <input
           id="description"
           name="description"
-          value={FormData.description}
+          value={formData.description}
           onChange={handleChange}
         />
         <label htmlFor="body">Body:</label>
         <input
           id="body"
           name="body"
-          value={FormData.body}
+          value={formData.body}
           onChange={handleChange}
         />
         <button>Save</button>

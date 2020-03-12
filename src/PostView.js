@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams, useHistory } from "react-router-dom";
 
-function PostView({ posts, remove, update, setEditing }) {
+function PostView({ posts, remove, update, setEditing, post }) {
   const { postId } = useParams();
   const history = useHistory();
-
-
-  let post = Object.entries(posts).find(p => postId === p[0])
 
   const handleEdit = () => {
     setEditing(true);
