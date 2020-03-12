@@ -19,25 +19,40 @@ function App() {
       return postCopy;
     });
   }
-  
+
   const update = (id, updatedPost) => {
     setPosts(posts => {
       let postCopy = { ...posts };
       // console.log('postCopy[id]', postCopy[id])
       postCopy[id] = updatedPost;
-      return postCopy;
+      return postCopy; 
     });
   }
-  
-    function remove(id) {
-        delete posts[id]
-    }
+
+  const addComment = (id, comment) => {
+    setPosts(posts => {
+      const postCopy = { ...posts };
+      postCopy[id] = { ...posts, comments: comment };
+      return postCopy;
+    });
+  };
+
+  console.log(posts)
+
+  const remove = id => {
+    delete posts[id]
+  }
 
   return (
     <BrowserRouter>
       <div className="App">
         <NavBar />
-        <Routes add={add} posts={posts} update={update} remove={remove}/>
+        <Routes
+          add={add}
+          posts={posts}
+          update={update}
+          remove={remove}
+          addComment={addComment} />
       </div>
     </BrowserRouter>
   );

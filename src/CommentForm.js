@@ -1,39 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-function CommentForm( {post}) {
-  const INITIAL_FORM_DATA = { body: "" }
+function CommentForm({ post, add }) {
 
-  const [formData, setFormData] = useState(INITIAL_FORM_DATA);
+  const [formData, setFormData] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
-    add({ ...formData });
-    history.push('/');
-    setFormData(INITIAL_FORM_DATA);
+    add(formData);
+    // history.push('/');
+    setFormData('');
   }
 
   const handleChange = e => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    })
-  }
+    setFormData(e.target.value);
+  };
+  console.log(formData)
 
-return(
-  <div>
-  <form onSubmit={handleSubmit}>
-    <input
-      id="title"
-      name="title"
-      placeholder="New Comment"
-      value={formData.title}
-      onChange={handleChange}
-    />
-    </form>
-    <button>Add Comment</button>
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="comment"></label>
+        <input
+          id="comment"
+          name="comment"
+          placeholder="New Comment"
+          value={formData}
+          onChange={handleChange}
+        />
+        <button>Add Comment</button>
+      </form>
     </div>
-)
+  )
 }
 
 export default CommentForm;

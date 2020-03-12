@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import PostView from './PostView';
 import PostForm from './PostForm';
 
-function SinglePost({ posts, update, remove }) {
+function SinglePost({ posts, update, remove, add }) {
   const { postId } = useParams();
   const [editing, setEditing] = useState(false);
 
@@ -11,7 +11,20 @@ function SinglePost({ posts, update, remove }) {
 
   return (
     <div className="SinglePost">
-      {editing ? <PostForm posts={posts} post={post} postId={postId} update={update} editing={editing} setEditing={setEditing} /> : <PostView posts={posts} post={post} setEditing={setEditing} remove={remove}/>}
+      {editing ?
+        <PostForm
+          posts={posts}
+          post={post}
+          postId={postId}
+          update={update}
+          editing={editing} 
+          setEditing={setEditing} />
+        : <PostView
+          posts={posts}
+          post={post}
+          setEditing={setEditing}
+          remove={remove}
+          add={add} />}
     </div>
   );
 }

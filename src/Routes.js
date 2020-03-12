@@ -4,7 +4,7 @@ import Home from './Home';
 import NewPost from './NewPost';
 import SinglePost from './SinglePost';
 
-function Routes({ add, posts, remove, update }) {
+function Routes({ add, posts, remove, update, addComment }) {
 
   return (
     <div>
@@ -16,7 +16,11 @@ function Routes({ add, posts, remove, update }) {
           <NewPost add={add} />
         </Route>
         <Route exact path="/:postId">
-          <SinglePost posts={posts} update={update} remove={remove}/>
+          <SinglePost
+            posts={posts}
+            update={update}
+            remove={remove}
+            add={addComment} />
         </Route>
         <Redirect to="/" />
       </Switch>
