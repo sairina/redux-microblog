@@ -28,7 +28,7 @@ function App() {
     });
   }
 
-  const addComment = (id, comment) => {
+  const addComment = (id, comment) => { //added this function to add comments
     setPosts(posts => {
       const postCopy = { ...posts };
       postCopy[id].comments = [...postCopy[id].comments, comment];

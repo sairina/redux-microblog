@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 function CommentForm({ add }) {
   const { postId } = useParams();
-  const [formData, setFormData] = useState('');
+  const [formData, setFormData] = useState(''); //updated this to string
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -14,7 +14,6 @@ function CommentForm({ add }) {
   const handleChange = e => {
     setFormData(e.target.value);
   };
-  console.log(formData)
 
   return (
     <div>
