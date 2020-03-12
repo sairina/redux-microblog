@@ -3,7 +3,8 @@ import TitleList from './TitleList';
 
 function Home({ posts }) {
 
-  const singlePost = Object.entries(posts).map(p => <TitleList posts={p} key={p[0]} />
+  const singlePost = Object.entries(posts)
+    .map(p => <TitleList posts={p} key={p[0]} />
   );
 
   return (
