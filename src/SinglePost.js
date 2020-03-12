@@ -7,9 +7,6 @@ function SinglePost({ posts, update, remove, add, setPosts }) {
   const { postId } = useParams();
   const [editing, setEditing] = useState(false);
 
-  console.log('postId',postId)
-  console.log('posts', posts)
-  console.log('singlePost', Object.entries(posts).find(p => postId === p[0]))
   let post = Object.entries(posts).find(p => postId === p[0])
 
   return (
