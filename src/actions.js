@@ -7,9 +7,16 @@ export function addPost(post) {
   };
 }
 
-  export function updatePost(post) {
-    return {
-      type: UPDATE_POST,
-      payload: post
-    }
+export function updatePost(post) {
+  return {
+    type: UPDATE_POST,
+    payload: post
   }
+}
+
+export function deletePost(id) {
+  return {
+    type: DELETE_POST,
+    payload: id
+  }
+}

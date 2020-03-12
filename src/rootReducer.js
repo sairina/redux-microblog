@@ -8,16 +8,16 @@ function rootReducer(state = INITIAL_STATE, action) {
       // console.log(action.payload)
       return { ...state, [action.payload.id]: action.payload };;
     case UPDATE_POST:
-      console.log('action payload', action.payload)
-      console.log('action payload id', action.payload.id)
       return {
         ...state, [action.payload.id]: {
           ...action.payload,
           comments: state[action.payload.id].comments
         }
       };
-    // case DELETE_POST:
-    //   return;
+    case DELETE_POST:
+      let stateCopy = { ...state };
+      delete stateCopy[action.payload];
+      return stateCopy;
     // case ADD_COMMENT:
     //   return;
     // case DELETE_COMMENT:
@@ -25,8 +25,6 @@ function rootReducer(state = INITIAL_STATE, action) {
     default:
       console.warn("Unable to find action type: ", action.type)
       return state;
-
-
   }
 }
 

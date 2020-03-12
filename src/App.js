@@ -17,17 +17,12 @@ function App() {
     });
   };
 
-  const remove = id => {
-    delete posts[id]
-  }
-
   return (
     <BrowserRouter>
       <div className="App">
         <NavBar />
         <Routes
           posts={posts}
-          remove={remove}
           addComment={addComment}
           setPosts={setPosts}
         />

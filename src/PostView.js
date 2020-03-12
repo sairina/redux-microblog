@@ -3,20 +3,22 @@ import Comment from './Comment';
 import CommentForm from './CommentForm';
 import { useParams, useHistory } from "react-router-dom";
 import { v4 as uuid } from 'uuid';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { deletePost } from './actions';
 
-function PostView({ remove, update, setEditing, setPosts, post, add }) { //update??
+function PostView({ setEditing, setPosts, post, add }) { //update??
   const { postId } = useParams();
   const history = useHistory();
   const store = useSelector(store => store);
-  const {title, description, body, comments} = store[postId];
+  const dispatch = useDispatch();
+  const { title, description, body, comments } = store[postId];
 
   const handleEdit = () => {
     setEditing(true);
   };
 
   const handleRemove = () => {
-    remove(postId)
+    dispatch(deletePost(postId));
     history.push('/');
   };
 
