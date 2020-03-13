@@ -1,23 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllPostsFromAPI } from './actions';
 import { useDispatch } from 'react-redux';
 
 function TitleList({ post }) {
   const dispatch = useDispatch();
-  const [isLoading, setIsLoading] = useState(true);
-
 
   useEffect(() => {
-    async function getAllPosts(){
-      dispatch(getAllPostsFromAPI()).then(() => setIsLoading(false));
+    async function getAllPosts() {
+      dispatch(getAllPostsFromAPI());
     }
-    if(isLoading){
-      getAllPosts();
-    }
-  }, [dispatch, isLoading]);
-
-  if (isLoading) return <b>Loading</b>;
+    getAllPosts();
+  }, [dispatch]);
 
   return (
     <div className="TitleList">
