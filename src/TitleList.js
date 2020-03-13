@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 
 function TitleList({ post }) {
   const dispatch = useDispatch();
-
+  console.log("In TitleList!");
   useEffect(() => {
     async function getAllPosts() {
       dispatch(getAllPostsFromAPI());
