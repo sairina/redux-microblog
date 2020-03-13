@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import TitleList from './TitleList';
 import { useSelector } from 'react-redux';
+import { getAllPostsFromAPI } from './actions';
+import { useDispatch } from 'react-redux';
 
 function Home() {
+  
+  const dispatch = useDispatch();
   console.log("In HOME!")
+  useEffect(() => {
+      function getAllPosts() {
+      dispatch(getAllPostsFromAPI());
+    }
+    getAllPosts();
+  }, [dispatch]);
+
+
   const store = useSelector(store => store);
   const singlePost = Object.entries(store).map(p => <TitleList post={p} key={p[0]} />);
   //singlePost to object

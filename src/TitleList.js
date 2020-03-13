@@ -1,18 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { getAllPostsFromAPI } from './actions';
-import { useDispatch } from 'react-redux';
+
 
 function TitleList({ post }) {
-  const dispatch = useDispatch();
-  console.log("In TitleList!");
-  useEffect(() => {
-    async function getAllPosts() {
-      dispatch(getAllPostsFromAPI());
-    }
-    getAllPosts();
-  }, [dispatch]);
-
+  
   return (
     <div className="TitleList">
       <Link to={`/posts/${post[0]}`}>
