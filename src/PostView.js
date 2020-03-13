@@ -2,7 +2,7 @@ import React from 'react';
 import Comment from './Comment';
 import CommentForm from './CommentForm';
 import { useParams, useHistory } from "react-router-dom";
-import { v4 as uuid } from 'uuid';
+// import { v4 as uuid } from 'uuid';
 import { useSelector, useDispatch } from 'react-redux';
 import { deletePost } from './actions';
 
@@ -13,6 +13,8 @@ function PostView({ setEditing, setPosts, post }) { //update??
   const dispatch = useDispatch();
   const { title, description, body, comments } = store[postId];
 
+
+  console.log('PostView: ', post)
   const handleEdit = () => {
     setEditing(true);
   };
@@ -44,7 +46,7 @@ function PostView({ setEditing, setPosts, post }) { //update??
         <div>
           <h2>Comments</h2>
           {console.log(store)}
-          {comments.map(c => <Comment key={uuid()} comment={c.comment} id={c.id} remove={removeComment} postId={postId} />)}
+          {comments.map(c => <Comment key={c.id} comment={c.comment} id={c.id} remove={removeComment} postId={postId} />)}
           <CommentForm post={post} />
         </div>
       </div>

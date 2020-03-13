@@ -4,17 +4,23 @@ import { useDispatch } from 'react-redux';
 import { addPost, updatePost } from './actions';
 import { v4 as uuid } from 'uuid';
 
-function PostForm({postId, editing, setEditing, post }) {
+function PostForm({ postId, editing, setEditing, post }) {
   const dispatch = useDispatch();
+  const history = useHistory();
+  
   const INITIAL_FORM_DATA = post ?
-    post[1] 
+    {
+      title: post.title,
+      description: post.description,
+      body: post.body,
+      comments: post.comments
+    }
     : {
       title: "",
       description: "",
       body: "",
       comments: []
-    }; //need to fix this because post[1] is no longer what we call
-  const history = useHistory();
+    }; 
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 
   const handleSubmit = e => {
@@ -26,7 +32,7 @@ function PostForm({postId, editing, setEditing, post }) {
       setFormData(INITIAL_FORM_DATA);
     } else {
       e.preventDefault();
-      dispatch(updatePost({...formData, id: postId}));
+      dispatch(updatePost({ ...formData, id: postId }));
       setEditing(false);
       history.push(`/posts/${postId}`);
     }
