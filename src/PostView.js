@@ -6,12 +6,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { deletePost } from './actions';
 import Button from 'react-bootstrap/Button';
 
-function PostView({ setEditing, setPosts, post }) {
+function PostView({ setEditing }) {
   const { postId } = useParams();
   const history = useHistory();
-  const store = useSelector(st => st);
   const dispatch = useDispatch();
-  const { title, description, body, comments } = store[postId];
+  const { title, description, body, comments } = useSelector(st => st[postId]);
 
   const handleEdit = () => {
     setEditing(true);
@@ -20,15 +19,6 @@ function PostView({ setEditing, setPosts, post }) {
   const handleRemove = () => {
     dispatch(deletePost(postId));
     history.push('/');
-  };
-
-  const removeComment = comment => {
-    let newCommentsArr = comments.filter(c => c !== comment);
-    setPosts(posts => {
-      let postCopy = { ...posts };
-      postCopy[postId].comments = newCommentsArr;
-      return postCopy
-    });
   };
 
   return (
@@ -43,8 +33,8 @@ function PostView({ setEditing, setPosts, post }) {
       <hr></hr>
       <div className="PostView-CommentList" style={{ marginTop: '40px' }}>
         <h2>Comments</h2>
-        {comments.map(c => <Comment key={c.id} comment={c.comment} id={c.id} remove={removeComment} postId={postId} />)}
-        <CommentForm post={post} />
+        {comments.map(c => <Comment key={c.id} comment={c.comment} id={c.id} postId={postId} />)}
+        <CommentForm />
       </div>
     </div>
   );
