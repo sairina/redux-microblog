@@ -7,6 +7,7 @@ export function getAllPostsFromAPI() {
   return async function (dispatch) {
     try {
       let res = await axios.get(`${API_URL_POSTS}`);
+      console.log('response: ', res) //on load, returns db posts
       dispatch(getAllPosts(res.data));
     } catch (err) {
       dispatch(handleError(err.res.data));

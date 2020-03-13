@@ -15,7 +15,7 @@ const INITIAL_STATE = {};
 function rootReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case GET_ALL_POSTS:
-      return { ...state };
+      return {...state, ...action.payload}; //added action.payload
 
     case GET_POST:
       return { ...state, [action.payload.id]: action.payload };
