@@ -7,7 +7,7 @@ import { v4 as uuid } from 'uuid';
 function PostForm({ postId, editing, setEditing, post }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  
+
   const INITIAL_FORM_DATA = post ?
     {
       title: post.title,
@@ -20,7 +20,7 @@ function PostForm({ postId, editing, setEditing, post }) {
       description: "",
       body: "",
       comments: []
-    }; 
+    };
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 
   const handleSubmit = e => {

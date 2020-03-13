@@ -2,11 +2,10 @@ import React from 'react';
 import Comment from './Comment';
 import CommentForm from './CommentForm';
 import { useParams, useHistory } from "react-router-dom";
-// import { v4 as uuid } from 'uuid';
 import { useSelector, useDispatch } from 'react-redux';
 import { deletePost } from './actions';
 
-function PostView({ setEditing, setPosts, post }) { //update??
+function PostView({ setEditing, setPosts, post }) {
   const { postId } = useParams();
   const history = useHistory();
   const store = useSelector(store => store);
@@ -32,7 +31,7 @@ function PostView({ setEditing, setPosts, post }) { //update??
       return postCopy
     });
   };
-  
+
   return (
     <div>
       <div>
@@ -45,7 +44,6 @@ function PostView({ setEditing, setPosts, post }) { //update??
         </div>
         <div>
           <h2>Comments</h2>
-          {console.log(store)}
           {comments.map(c => <Comment key={c.id} comment={c.comment} id={c.id} remove={removeComment} postId={postId} />)}
           <CommentForm post={post} />
         </div>

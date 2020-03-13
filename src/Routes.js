@@ -9,15 +9,9 @@ function Routes() {
   return (
     <div>
       <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/new">
-          <NewPost />
-        </Route>
-        <Route exact path="/posts/:postId">
-          <SinglePost />
-        </Route>
+        <Route exact path="/"><Home /></Route>
+        <Route exact path="/new"><NewPost /></Route>
+        <Route exact path="/posts/:postId"><SinglePost /></Route>
         <Redirect to="/" />
       </Switch>
     </div>
