@@ -1,4 +1,4 @@
-import { ADD_POST, UPDATE_POST, DELETE_POST, ADD_COMMENT, DELETE_COMMENT } from './actionTypes';
+import { ADD_POST, UPDATE_POST, GET_POST, GET_ALL_POSTS, DELETE_POST, ADD_COMMENT, DELETE_COMMENT } from './actionTypes';
 
 const INITIAL_STATE = {};
 // data structure of the store.
@@ -14,10 +14,13 @@ const INITIAL_STATE = {};
 
 function rootReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
+    case GET_ALL_POSTS:
+      return { ...state };
+
+    case GET_POST:
+      return { ...state, [action.payload.id]: action.payload };
 
     case ADD_POST:
-      console.log("ADD POST PAYLOAD", action.payload)
-
       return { ...state, [action.payload.id]: action.payload };
 
     case UPDATE_POST:
