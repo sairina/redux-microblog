@@ -6,10 +6,9 @@ function TitleList({ post }) {
   return (
     <div className="TitleList">
       <Link to={`/posts/${post[0]}`}>
-        <h3>{post[1].title}</h3>
+        <h4>Post: {post[1].title}</h4>
       </Link>
-      <h4>{post[1].description}</h4>
-
+      <h5>Description: {post[1].description}</h5>
     </div>
   );
 }

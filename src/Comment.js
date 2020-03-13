@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteComment } from './actions';
+import Button from 'react-bootstrap/Button';
 
 function Comment({ comment, id, postId }) {
   const dispatch = useDispatch();
@@ -11,8 +12,8 @@ function Comment({ comment, id, postId }) {
 
   return (
     <div className="Comment">
-      <div>{comment}</div>
-      <button onClick={handleCommentDelete}>Delete</button>
+      <p>{comment}</p>
+      <Button variant="danger" onClick={handleCommentDelete}>Delete</Button>
     </div>
   );
 }

@@ -7,9 +7,12 @@ function Home() {
   const singlePost = Object.entries(store).map(p => <TitleList post={p} key={p[0]} />);
 
   return (
-    <div className="Home">
-      <h3>Welcome to Microblog, our innovative site for communicating on the information superhighway.</h3>
-      {singlePost}
+    <div className="Home" style={{ marginTop: '40px' }}>
+      <div className="Home-title" style={{ margin: '20px' }}>
+        <h4>Welcome to Microblog, our innovative site for communicating on the information superhighway.</h4>
+        <hr></hr>
+        {singlePost}
+      </div>
     </div>
   );
 }

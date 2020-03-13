@@ -3,6 +3,9 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addPost, updatePost } from './actions';
 import { v4 as uuid } from 'uuid';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import './PostForm.css';
 
 function PostForm({ postId, editing, setEditing, post }) {
   const dispatch = useDispatch();
@@ -52,32 +55,39 @@ function PostForm({ postId, editing, setEditing, post }) {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="title">Title</label>
-        <input
-          id="title"
-          name="title"
-          value={formData.title}
-          onChange={handleChange}
-        />
-        <label htmlFor="description">Description</label>
-        <input
-          id="description"
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-        />
-        <label htmlFor="body">Body:</label>
-        <input
-          id="body"
-          name="body"
-          value={formData.body}
-          onChange={handleChange}
-        />
-        <button>Save</button>
-      </form>
-      <button onClick={handleCancel}>Cancel</button>
+    <div className="PostForm">
+      <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="title">
+          <Form.Label>Title</Form.Label>
+          <Form.Control
+            name="title"
+            type="text"
+            placeholder="Enter a title"
+            value={formData.title}
+            onChange={handleChange} />
+        </Form.Group>
+        <Form.Group controlId="description">
+          <Form.Label>Description</Form.Label>
+          <Form.Control
+            name="description"
+            type="text"
+            placeholder="Enter a description"
+            value={formData.description}
+            onChange={handleChange} />
+        </Form.Group>
+        <Form.Group controlId="body">
+          <Form.Label>Body</Form.Label>
+          <Form.Control
+            name="body"
+            type="text"
+            placeholder="Blog here!"
+            value={formData.body}
+            onChange={handleChange}
+            as="textarea" rows="4" />
+        </Form.Group>
+        <Button className="PostForm-button" variant="primary" type="submit">Save</Button>
+        <Button className="PostForm-button" variant="secondary" onClick={handleCancel}>Cancel</Button>
+      </Form >
     </div>
   );
 }
