@@ -20,3 +20,19 @@ export function deletePost(id) {
     payload: id
   }
 }
+
+  export function addComment(comment) {
+  return {
+    type: ADD_COMMENT,
+    payload: comment
+  }
+}
+  export function deleteComment(id, postId) {
+  return {
+    type: DELETE_COMMENT,
+    payload: {id, postId}
+  }
+}
+
+
+

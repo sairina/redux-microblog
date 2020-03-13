@@ -8,18 +8,17 @@ function SinglePost({ posts, setPosts }) {
   const [editing, setEditing] = useState(false);
 
   let post = Object.entries(posts).find(p => postId === p[0])
+  //pass down an object instead (post[1])
 
   return (
     <div className="SinglePost">
       {editing ?
         <PostForm
-          posts={posts}
           post={post}
           postId={postId}
           editing={editing} 
           setEditing={setEditing} />
         : <PostView
-          posts={posts}
           post={post}
           setEditing={setEditing}
           setPosts={setPosts} />}

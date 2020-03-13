@@ -6,7 +6,7 @@ import { v4 as uuid } from 'uuid';
 import { useSelector, useDispatch } from 'react-redux';
 import { deletePost } from './actions';
 
-function PostView({ setEditing, setPosts, post, add }) { //update??
+function PostView({ setEditing, setPosts, post }) { //update??
   const { postId } = useParams();
   const history = useHistory();
   const store = useSelector(store => store);
@@ -30,7 +30,7 @@ function PostView({ setEditing, setPosts, post, add }) { //update??
       return postCopy
     });
   };
-
+  
   return (
     <div>
       <div>
@@ -43,8 +43,8 @@ function PostView({ setEditing, setPosts, post, add }) { //update??
         </div>
         <div>
           <h2>Comments</h2>
-          {comments.map(c => <Comment key={uuid()} comment={c} remove={removeComment} />)}
-          <CommentForm post={post} add={add} />
+          {comments.map(c => <Comment key={uuid()} id={uuid()} comment={c} remove={removeComment} postId={postId} />)}
+          <CommentForm post={post} />
         </div>
       </div>
     </div>

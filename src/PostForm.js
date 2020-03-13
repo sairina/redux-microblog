@@ -7,13 +7,13 @@ import { v4 as uuid } from 'uuid';
 function PostForm({postId, editing, setEditing, post }) {
   const dispatch = useDispatch();
   const INITIAL_FORM_DATA = post ?
-    post[1]
+    post[1] 
     : {
       title: "",
       description: "",
       body: "",
       comments: []
-    };
+    }; //need to fix this because post[1] is no longer what we call
   const history = useHistory();
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 

@@ -4,13 +4,13 @@ import Home from './Home';
 import NewPost from './NewPost';
 import SinglePost from './SinglePost';
 
-function Routes({ posts, addComment, setPosts }) {
+function Routes({ posts, setPosts }) {
 
   return (
     <div>
       <Switch>
         <Route exact path="/">
-          <Home posts={posts} />
+          <Home />
         </Route>
         <Route exact path="/new">
           <NewPost />
@@ -18,7 +18,6 @@ function Routes({ posts, addComment, setPosts }) {
         <Route exact path="/posts/:postId">
           <SinglePost
             posts={posts}
-            add={addComment}
             setPosts={setPosts} />
         </Route>
         <Redirect to="/" />

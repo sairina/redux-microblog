@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addComment } from './actions'
 
-function CommentForm({ add }) {
+function CommentForm() {
   const { postId } = useParams();
   const [formData, setFormData] = useState('');
+  const dispatch = useDispatch();
 
   const handleSubmit = e => {
     e.preventDefault();
-    add(postId, formData);
+    dispatch(addComment({ formData, id: postId }))
     setFormData('');
   }
 
