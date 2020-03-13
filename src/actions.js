@@ -21,10 +21,10 @@ export function deletePost(id) {
   }
 }
 
-  export function addComment(comment) {
+  export function addComment(commentData) {
   return {
     type: ADD_COMMENT,
-    payload: comment
+    payload: commentData
   }
 }
   export function deleteComment(id, postId) {

@@ -43,7 +43,8 @@ function PostView({ setEditing, setPosts, post }) { //update??
         </div>
         <div>
           <h2>Comments</h2>
-          {comments.map(c => <Comment key={uuid()} id={uuid()} comment={c} remove={removeComment} postId={postId} />)}
+          {console.log(store)}
+          {comments.map(c => <Comment key={uuid()} comment={c.comment} id={c.id} remove={removeComment} postId={postId} />)}
           <CommentForm post={post} />
         </div>
       </div>

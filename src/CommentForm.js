@@ -2,20 +2,26 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addComment } from './actions'
+import { v4 as uuid } from 'uuid';
 
 function CommentForm() {
   const { postId } = useParams();
-  const [formData, setFormData] = useState('');
+  const INITIAL_COMMENT_FORM = {id: "", comment:"", postId};
+  const [formData, setFormData] = useState(INITIAL_COMMENT_FORM);
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(addComment({ formData, id: postId }))
-    setFormData('');
+    dispatch(addComment({ ...formData, id: uuid(), postId }))
+    setFormData(INITIAL_COMMENT_FORM);
   }
 
-  const handleChange = e => {
-    setFormData(e.target.value);
+  const handleChange = evt => {
+    const { name, value } = evt.target;
+    setFormData(fData => ({
+      ...fData,
+      [name]: value
+    }));
   };
 
   return (
@@ -26,7 +32,7 @@ function CommentForm() {
           id="comment"
           name="comment"
           placeholder="New Comment"
-          value={formData}
+          value={formData.comment}
           onChange={handleChange}
         />
         <button>Add Comment</button>
