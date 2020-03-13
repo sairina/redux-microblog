@@ -2,10 +2,10 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import {deleteComment} from './actions';
 
-function Comment({ comment, remove, id, postId }) {
+function Comment({ comment, id, postId }) {
   const dispatch = useDispatch();
 
-  const handleCommentDelete = () => { //added function use delete button on comment
+  const handleCommentDelete = () => {
     dispatch(deleteComment(id, postId));
   };
 

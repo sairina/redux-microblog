@@ -54,8 +54,8 @@ function rootReducer(state = INITIAL_STATE, action) {
         {
           ...state[action.payload.postId],
           comments: [...state[action.payload.postId].comments.filter(c => {
-            console.log("C.ID", c)
-            console.log("Action.payload.Id", action.payload)
+            // console.log("C.ID", c)
+            // console.log("Action.payload.Id", action.payload)
             return c.id !== action.payload.id
           })]
         }

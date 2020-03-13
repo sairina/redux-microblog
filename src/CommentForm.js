@@ -6,9 +6,9 @@ import { v4 as uuid } from 'uuid';
 
 function CommentForm() {
   const { postId } = useParams();
-  const INITIAL_COMMENT_FORM = {id: "", comment:"", postId};
-  const [formData, setFormData] = useState(INITIAL_COMMENT_FORM);
   const dispatch = useDispatch();
+  const INITIAL_COMMENT_FORM = { id: "", comment: "", postId };
+  const [formData, setFormData] = useState(INITIAL_COMMENT_FORM);
 
   const handleSubmit = e => {
     e.preventDefault();
